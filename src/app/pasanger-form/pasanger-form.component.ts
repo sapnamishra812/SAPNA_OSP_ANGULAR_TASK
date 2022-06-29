@@ -86,7 +86,6 @@ export class PasangerFormComponent implements OnInit {
    this.apiService.getApi('passenger?page='+pagenumber+'&size=10').subscribe((data: any) => {
       this.users1 = data.data;
       console.log(data);
-      console.log("list");
       this.totalrecords= data.totalPages;
     });
   }
