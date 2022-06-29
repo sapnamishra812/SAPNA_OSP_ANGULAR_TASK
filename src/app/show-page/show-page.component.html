@@ -1,0 +1,47 @@
+
+ <div class="container">
+   <div class="row">
+      <form [formGroup]="createForm" (ngSubmit)="updateList()">
+
+        <div class="col-8">
+          <input class="form-control mt-3 mb-3" formControlName="name" placeholder="name">
+          <span  class="text-danger" *ngIf="submitFormCheck && createForm.controls['name'].hasError('required')">Required Name</span>
+          <span  class="text-danger" *ngIf="submitFormCheck && createForm.controls['name'].hasError('pattern')">Invalid </span>
+        </div>
+        <div class="col-8">
+          <input class="form-control mt-3 mb-3" formControlName="trips" placeholder="trip">
+          <span class="text-denger" *ngIf="submitFormCheck && createForm.controls['trips'].hasError('required')">Required Qauntity</span>
+
+        </div>
+        <div class="col-8">
+          <input class="form-control mt-3 mb-3" formControlName="airline" placeholder="airline">
+        </div>
+        <div class="col-8">
+          <input class="form-control mt-3 mb-3" formControlName="country" placeholder="country">
+        </div>
+        <div class="col-8">
+          <input class="form-control mt-3 mb-3" formControlName="logo" placeholder="logo">
+        </div>
+        <div class="col-8">
+          <input class="form-control mt-3 mb-3" formControlName="slogan" placeholder="slogan">
+        </div>
+        <div class="col-8">
+          <input class="form-control mt-3 mb-3" formControlName="head_quaters" placeholder="head_quaters">
+        </div>
+        <div class="col-8">
+          <input class="form-control mt-3 mb-3" formControlName="website" placeholder="website">
+        </div>
+
+        <div class="col-8">
+          <input class="form-control mt-3 mb-3" formControlName="established" placeholder="established">
+        </div>
+        <div class="col-8">
+          <input class="form-control mt-3 mb-3" formControlName="name1" placeholder="name1">
+        </div>
+         <div class="col-8 mb-2">
+           <input class="form-control" formControlName="message" placeholder="message">
+         </div>
+         <button type="submit" class="btn btn-primary">showUpdateFrom</button>
+      </form>
+   </div>
+ </div>
