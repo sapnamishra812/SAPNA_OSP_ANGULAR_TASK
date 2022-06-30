@@ -1,0 +1,50 @@
+
+<div class="container">
+  <h2>Welcom to pasanger</h2>
+   <div class="row">
+
+     <div class="col-12">
+      <p-table [value]="users" >
+        <ng-template pTemplate="header">
+            <tr>
+
+                <th>name</th>
+                <th>trips</th>
+                <th>airline</th>
+                <th>country</th>
+                <th>logo</th>
+                <th>slogan</th>
+                <th>head_quaters</th>
+                <th>website</th>
+                <th>established</th>
+                <th>view</th>
+
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-pas>
+            <tr>
+                <td>{{pas.name}}</td>
+                <td>{{pas.trips}}</td>
+                <td>{{pas.airline[0].name}}</td>
+                 <td >{{pas.airline[0].country}}</td>
+                <td ><img  [src]='pas.airline[0].logo'></td>
+                <td >{{pas.airline[0].slogan}}</td>
+                <td >{{pas.airline[0].head_quaters}}</td>
+                <td >{{pas.airline[0].website}}</td>
+                <td >{{pas.airline[0].established}}</td>
+                <td [routerLink]="['/show', pas._id]" routerLinkActive="router-link-active"><i class="pi-external-link"></i></td>
+                <td ><p-confirmPopup></p-confirmPopup><i class="pi pi-trash"  (click)="confirm($event,pas._id)"></i></td>
+                 <!-- <td> <p-confirmPopup></p-confirmPopup>
+                     <button (click)="confirm($event,pas._id)" class="btn btn-primary mb-2" label="confirm">delete</button>
+                </td> -->
+            </tr>
+        </ng-template>
+
+    </p-table>
+
+     </div>
+   </div>
+</div>
+
+<p-paginator [rows]="10" [totalRecords]="totalrecords"   (onPageChange)="paginate($event)"></p-paginator>
+

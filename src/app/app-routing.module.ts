@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PasangerFormComponent } from './pasanger-form/pasanger-form.component';
+import { PasangerFormComponent } from './list-page/pasanger-form.component';
 import { ShowPageComponent } from './show-page/show-page.component';
 
 const routes: Routes = [

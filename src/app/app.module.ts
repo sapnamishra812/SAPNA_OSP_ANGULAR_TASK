@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ApiserviceService } from './apiservice.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PasangerFormComponent } from './pasanger-form/pasanger-form.component';
+import { PasangerFormComponent } from './list-page/pasanger-form.component';
 import {TableModule} from 'primeng/table';
 import {HttpClientModule} from '@angular/common/http';
 import { ShowPageComponent } from './show-page/show-page.component';

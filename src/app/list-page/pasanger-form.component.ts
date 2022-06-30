@@ -14,7 +14,6 @@ import {
   styleUrls: ['./pasanger-form.component.scss']
 })
 export class PasangerFormComponent implements OnInit {
-  pessangerForm:FormGroup;
   users: any;
   hidden: boolean= true;
   showEditPage:any;
@@ -27,31 +26,24 @@ export class PasangerFormComponent implements OnInit {
               private rout:ActivatedRoute,
               private confirmationService: ConfirmationService,
               private messageService: MessageService,
-              private primengConfig: PrimeNGConfig,
-
-               ) {
-                this.pessangerForm = fb.group({
-                  firstName: new FormControl('', [Validators.required, Validators.pattern((/^[a-zA-Z\\S]*$/))]),
-                  email: new FormControl('', [Validators.required])
-                })
+              private primengConfig: PrimeNGConfig,) {
+                    this.getdata(0);
                }
 
   ngOnInit(): void {
-    this.userApi();
+   // this.userApi();
     this.primengConfig.ripple = true;
+
   }
-   userApi(){
-        this.apiService.getApi('v1/passenger?page=0&size=10').subscribe((res:any)=>{
-          this.users = res.data;
-          console.log(res);
-        });
+  //  userApi(){
+  //       this.apiService.getApi('v1/passenger?page=0&size=10').subscribe((res:any)=>{
+  //         this.users = res.data;
+  //         console.log(res);
+  //     this.totalrecords= res.totalPages;
 
-    }
+  //       });
 
-  AddForm(){
-     console.log(this.pessangerForm.value);
-  }
-
+  //   }
 
   toDelete(id: any){
 
@@ -59,11 +51,12 @@ export class PasangerFormComponent implements OnInit {
       this.delete=data.data;
       console.log(data);
       alert('deleted successfully');
+      this.getdata(this.pagenumber);
     })
 
   }
 
-  confirm(id:any) {
+  confirm(event:any,id:any) {
     this.confirmationService.confirm({
       target: id.target,
       message: "Are you sure that you want to proceed?",
@@ -77,14 +70,19 @@ export class PasangerFormComponent implements OnInit {
           });
       },
       reject: () => {
+        this.messageService.add({
+          severity: "error",
+          summary: "reject",
+          detail: "You have rejected"
+        });
          alert ("this passanger list is not deleted");
       }
     });
   }
 
   getdata(pagenumber:any){
-   this.apiService.getApi('passenger?page='+pagenumber+'&size=10').subscribe((data: any) => {
-      this.users1 = data.data;
+   this.apiService.getApi('v1/passenger?page='+pagenumber+'&size=10').subscribe((data: any) => {
+      this.users = data.data;
       console.log(data);
       this.totalrecords= data.totalPages;
     });
